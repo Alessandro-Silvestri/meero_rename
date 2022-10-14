@@ -13,3 +13,4 @@ Here the folder name is 'Kebab Shop'
 
 ![03result](https://user-images.githubusercontent.com/103107872/195825254-8d0877e8-cb4a-48bd-8ff1-0d465ed9cb85.png)
 
+![list](https://user-images.githubusercontent.com/103107872/195854110-13b11fb5-091d-4143-9d22-7b5ab5297d5d.png)
