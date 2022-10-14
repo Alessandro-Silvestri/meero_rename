@@ -5,7 +5,7 @@ The restaurant name is the name folder
 put the NEF files and the txt file list (any txt file name) in a folder
 The hero files have to be put in a subfolder (any name)
 the renaming will follow the NEF files alphaberical order.
-Here the folder name is 'Kebab Shop'
+Here the main folder name is 'Kebab Shop'
 
 ![meero_rename](https://user-images.githubusercontent.com/103107872/195822288-c46c1f24-6149-403d-b2e3-7a98129a98f8.jpg)
 
