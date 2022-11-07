@@ -30,8 +30,11 @@ class MeeroRename:
         self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
         self.nef_files = list(filter(lambda x: x.endswith('.NEF'), os.listdir()))           # NEF files (list)
         # if a folder exists
+        self.hero_exists = False
         if self.exist_hero_folder(os.listdir()):
+            self.hero_exists = True
             self.dir_hero_name = list(filter(lambda x: '.' not in x, os.listdir()))[0] + '/'    # Hero directory name (list)   
+
     
         # cheking the text file matching with number of NEFs
         if not len(self.item_list_name) == len(self.nef_files):                             
@@ -82,7 +85,8 @@ class MeeroRename:
             # new name expression (replacing the spaces with underscore)
             name = self.restaurant_name.replace(" ", "") + '_' + self.item_list_name[i] + ".NEF"
             os.rename(nef, name)
-        self.rename_hero()
+        if self.hero_exists:
+            self.rename_hero()
 
     def reading_txt_file(self):
         '''Returns the content (list) without the \n character and spaces'''
@@ -112,4 +116,5 @@ Make a backup files just in case
 ''')
 
 a = MeeroRename()
+a.rename()
 
