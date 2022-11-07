@@ -29,27 +29,36 @@ class MeeroRename:
         self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]         # list txt file name
         self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
         self.nef_files = list(filter(lambda x: x.endswith('.NEF'), os.listdir()))           # NEF files (list)
-        self.dir_hero_name = list(filter(lambda x: '.' not in x, os.listdir()))[0] + '/'    # Hero directory name (list)
+        # if a folder exists
+        if self.exist_hero_folder(os.listdir()):
+            self.dir_hero_name = list(filter(lambda x: '.' not in x, os.listdir()))[0] + '/'    # Hero directory name (list)   
+    
         # cheking the text file matching with number of NEFs
         if not len(self.item_list_name) == len(self.nef_files):                             
             print("\nThe items number doesn't match with the NEF files\n")
             print("Program ended")
             quit()
     
+    def exist_hero_folder(self, lista: list):
+        '''boolean: check if a folder exists'''
+        a = False
+        for i in os.listdir():
+            if not '.' in i:
+                a = True
+                break
+        return a
+
     def checks(self):
         '''Checking if the structure files is right'''
-        # cheking the text file
-        count = fold_count = 0
+        count = 0
         nef_in = txt_in = False
         for i in os.listdir():
             if '.txt' in i: count += 1
-            if not '.' in i: fold_count += 1
+            if not '.' in i: pass
             if '.NEF' in i: nef_in = True
             if '.txt' in i: txt_in = True          
         if count > 1: print('Error: there are more then 1 text file') / quit()
         if count == 0: print('Error: text file missing') / quit()
-        if fold_count > 1: print('Error: there are more then 1 folder') /quit()
-        if fold_count == 0: print('Error: folder missing') / quit()
         if not nef_in: print('Error: files NEF missing') / quit()
         if not txt_in: print('Error: files text missing') / quit()
 
@@ -103,5 +112,4 @@ Make a backup files just in case
 ''')
 
 a = MeeroRename()
-a.rename()
 
