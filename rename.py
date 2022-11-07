@@ -10,13 +10,22 @@ Inside the Folder1 there is a subfolder with inside the photos taken from the to
 The renaming follow the alphabetical order
 
 Made by Alessandro Silvestri © 2022 <alessandro.silvestri.work@gmail.com>
+
+############## bugs to fix ################
+Linux version
+give the chance to avoid the hero pictures
+check if in the text file there are repeated names
+space in the hero picture names
+asking the directory pat in the begining
+###########################################
+
 '''
 import os
 
 class MeeroRename:
     def __init__(self):
         self.checks()
-        self.restaurant_name = str(os.getcwdb())[:-1].split('\\')[-1].lower()               # restaurant name (from folder name)            
+        self.restaurant_name = str(os.getcwdb())[:-1].split('/')[-1].lower()               # restaurant name (from folder name)            
         self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]         # list txt file name
         self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
         self.nef_files = list(filter(lambda x: x.endswith('.NEF'), os.listdir()))           # NEF files (list)
