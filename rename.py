@@ -13,7 +13,7 @@ Made by Alessandro Silvestri © 2022 <alessandro.silvestri.work@gmail.com>
 
 ############## bugs to fix ################
 Linux version
-give the chance to avoid the hero pictures
+give the chance to avoid the hero pictures (OK DONE!)
 check if in the text file there are repeated names
 space in the hero picture names
 asking the directory pat in the begining
@@ -45,7 +45,7 @@ class MeeroRename:
     def exist_hero_folder(self, lista: list):
         '''boolean: check if a folder exists'''
         a = False
-        for i in os.listdir():
+        for i in os.listdir(): # fix here (lista is not needed)
             if not '.' in i:
                 a = True
                 break
