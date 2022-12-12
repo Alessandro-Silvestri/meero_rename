@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 '''
 MEERO RENAME
 
@@ -13,6 +15,7 @@ Made by Alessandro Silvestri © 2022 <alessandro.silvestri.work@gmail.com>
 
 ############## bugs to fix ################
 Linux version
+in LINUX doesn't work the rename
 give the chance to avoid the hero pictures (OK DONE!)
 check if in the text file there are repeated names
 space in the hero picture names
@@ -29,6 +32,7 @@ class MeeroRename:
         self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]         # list txt file name
         self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
         self.nef_files = list(filter(lambda x: x.endswith('.NEF'), os.listdir()))           # NEF files (list)
+
         # if a folder exists
         self.hero_exists = False
         if self.exist_hero_folder(os.listdir()):
@@ -41,6 +45,12 @@ class MeeroRename:
             print("\nThe items number doesn't match with the NEF files\n")
             print("Program ended")
             quit()
+        
+        ######### DEBUG ############
+        print(self.nef_files)
+        print(self.item_list_name)
+        quit()
+        ######### DEBUG ############
     
     def exist_hero_folder(self, lista: list):
         '''boolean: check if a folder exists'''
@@ -79,12 +89,27 @@ class MeeroRename:
         else:
             print('\nWrong command, program ended\n')
             quit()
+
+
         # loop for renaming all the NEF files (not the hero ones)
         for i in range(len(self.item_list_name)):
             nef = self.nef_files[i]
             # new name expression (replacing the spaces with underscore)
             name = self.restaurant_name.replace(" ", "") + '_' + self.item_list_name[i] + ".NEF"
+
+
+######### DEBUG ############
+            print(nef, name)
+            
+            '''
             os.rename(nef, name)
+            '''
+######### DEBUG ############
+
+
+
+
+
         if self.hero_exists:
             self.rename_hero()
 
