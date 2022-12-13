@@ -13,15 +13,6 @@ The renaming follow the alphabetical order
 
 Made by Alessandro Silvestri © 2022 <alessandro.silvestri.work@gmail.com>
 
-############## bugs to fix ################
-Linux version
-in LINUX doesn't work the rename (OK DONE! just verify with a proper shoot)
-give the chance to avoid the hero pictures (OK DONE!)
-check if in the text file there are repeated names (OK DONE!)
-space in the hero picture names (OK DONE!)
-asking the directory pat in the begining
-###########################################
-
 '''
 import os
 
