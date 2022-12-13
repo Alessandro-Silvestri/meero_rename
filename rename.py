@@ -17,7 +17,7 @@ Made by Alessandro Silvestri © 2022 <alessandro.silvestri.work@gmail.com>
 Linux version
 in LINUX doesn't work the rename (OK DONE! just verify with a proper shoot)
 give the chance to avoid the hero pictures (OK DONE!)
-check if in the text file there are repeated names
+check if in the text file there are repeated names (OK DONE!)
 space in the hero picture names (OK DONE!)
 asking the directory pat in the begining
 ###########################################
@@ -27,7 +27,7 @@ import os
 
 class MeeroRename:
     def __init__(self):
-        self.checks()
+        self.check_structure()
         self.restaurant_name = str(os.getcwdb())[:-1].split('/')[-1].lower().replace(" ", "")               # restaurant name (from folder name)            
         self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]         # list txt file name
         self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
@@ -39,10 +39,15 @@ class MeeroRename:
             self.hero_exists = True
             self.dir_hero_name = list(filter(lambda x: '.' not in x, os.listdir()))[0] + '/'    # Hero directory name (list)   
 
-    
         # cheking the text file matching with number of NEFs
         if not len(self.item_list_name) == len(self.nef_files):                             
             print("\nThe items number doesn't match with the NEF files\n")
+            print("Program ended")
+            quit()
+        
+        # cheking the text file contains repeated names
+        if self.check_double_name(self.item_list_name):
+            print("The file txt contains repeated names")
             print("Program ended")
             quit()
 
@@ -55,7 +60,7 @@ class MeeroRename:
                 break
         return a
 
-    def checks(self):
+    def check_structure(self):
         '''Checking if the structure files is right'''
         count = 0
         nef_in = txt_in = False
@@ -68,6 +73,14 @@ class MeeroRename:
         if count == 0: print('Error: text file missing') / quit()
         if not nef_in: print('Error: files NEF missing') / quit()
         if not txt_in: print('Error: files text missing') / quit()
+    
+    def check_double_name(self, lista: list):
+        flag = False
+        for i in lista:
+            if lista.count(i) > 1:
+                flag = True
+                break
+        return flag
 
     def rename(self):
         '''Renaming the NEF files'''
