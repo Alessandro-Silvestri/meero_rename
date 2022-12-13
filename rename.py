@@ -28,10 +28,10 @@ import os
 class MeeroRename:
     def __init__(self):
         self.check_structure()
-        self.restaurant_name = str(os.getcwdb())[:-1].split('/')[-1].lower().replace(" ", "")               # restaurant name (from folder name)            
-        self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]         # list txt file name
-        self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))       # text file content (list) converted in lower case
-        self.nef_files = sorted(list(filter(lambda x: x.endswith('.NEF'), os.listdir())))           # NEF files (list)
+        self.restaurant_name = str(os.getcwdb())[:-1].split('/')[-1].lower().replace(" ", "")   # restaurant name (from folder name)            
+        self.list_txt = list(filter(lambda x: x.endswith('.txt'), os.listdir()))[0]             # list txt file name
+        self.item_list_name = list(map(lambda x: x.lower(), self.reading_txt_file()))           # text file content (list) converted in lower case
+        self.nef_files = sorted(list(filter(lambda x: x.endswith('.NEF'), os.listdir())))       # NEF files (list)
 
         # if a folder exists
         self.hero_exists = False
